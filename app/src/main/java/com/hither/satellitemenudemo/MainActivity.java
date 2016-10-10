@@ -1,5 +1,6 @@
 package com.hither.satellitemenudemo;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,12 +20,13 @@ public class MainActivity extends AppCompatActivity {
         SatelliteMenu menu = (SatelliteMenu) findViewById(R.id.menu);
         List<SatelliteMenuItem> items = new ArrayList<SatelliteMenuItem>();
         //顺序是从下网上排列,最后添加的就在第一个
+        items.add(new SatelliteMenuItem(Config.INDEX_SIX, R.drawable.ic_1));
         items.add(new SatelliteMenuItem(Config.INDEX_FIVE, R.drawable.ic_3));
         items.add(new SatelliteMenuItem(Config.INDEX_FOUR, R.drawable.ic_4));
         items.add(new SatelliteMenuItem(Config.INDEX_THREE, R.drawable.ic_5));
         items.add(new SatelliteMenuItem(Config.INDEX_TWO, R.drawable.ic_6));
         items.add(new SatelliteMenuItem(Config.INDEX_ONE, R.drawable.ic_2));
-        items.add(new SatelliteMenuItem(Config.INDEX_SIX, R.drawable.ic_1));
+
         menu.addItems(items);
 
         menu.setOnItemClickedListener(new SatelliteMenu.SateliteClickedListener() {
@@ -33,9 +35,15 @@ public class MainActivity extends AppCompatActivity {
                 switch (id) {
                     case Config.INDEX_ONE:
                         clickIndex(id);
+                        Intent intent = new Intent();
+                        intent.setClass(MainActivity.this, OneActivity.class);
+                        startActivity(intent);
                         break;
                     case Config.INDEX_TWO:
                         clickIndex(id);
+                        Intent intent2 = new Intent();
+                        intent2.setClass(MainActivity.this, TwoActivity.class);
+                        startActivity(intent2);
                         break;
                     case Config.INDEX_THREE:
                         clickIndex(id);
